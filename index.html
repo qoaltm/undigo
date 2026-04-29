@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitara — Undangan Digital Premium Indonesia</title>
+<meta name="description" content="Buat undangan digital elegan dalam hitungan menit. Template premium, RSVP otomatis, dan berbagi link instan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #DCE7D7;
+    --sage-dark: #B8CEAF;
+    --sage-deeper: #7FA87A;
+    --pink: #E6B3D3;
+    --pink-dark: #C97DB0;
+    --pink-light: #F2D5E9;
+    --purple: #8E4A97;
+    --purple-dark: #6B3572;
+    --purple-light: #C49BCB;
+    --charcoal: #2C2C2C;
+    --charcoal-soft: #4A4A4A;
+    --gray-mid: #8A8A8A;
+    --gray-light: #F7F5F2;
+    --white: #FEFEFE;
+    --cream: #FAF8F5;
+    --border: rgba(44,44,44,0.1);
+    --shadow-sm: 0 2px 12px rgba(142,74,151,0.06);
+    --shadow-md: 0 8px 32px rgba(142,74,151,0.10);
+    --shadow-lg: 0 20px 60px rgba(142,74,151,0.14);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 36px;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--purple-light); border-radius: 99px; }
+
+  /* ── NAVBAR ── */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 2rem;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(250,248,245,0.85);
+    backdrop-filter: blur(20px) saturate(160%);
+    border-bottom: 1px solid rgba(220,231,215,0.4);
+    transition: all 0.4s var(--transition);
+  }
+  .navbar.scrolled {
+    height: 60px;
+    background: rgba(250,248,245,0.95);
+    box-shadow: 0 4px 24px rgba(142,74,151,0.08);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--pink-dark) 100%);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 600;
+    color: white; letter-spacing: -0.5px;
+  }
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.5px;
+  }
+  .logo-text span { color: var(--purple); }
+  .nav-links {
+    display: flex; align-items: center; gap: 0.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px; font-weight: 400;
+    color: var(--charcoal-soft);
+    text-decoration: none;
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { color: var(--purple); background: rgba(142,74,151,0.06); }
+  .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+  .btn-ghost {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0.5rem 1.1rem;
+    font-family: var(--font-body); font-size: 13.5px; font-weight: 400;
+    color: var(--charcoal-soft);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    cursor: pointer; text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-ghost:hover { border-color: var(--purple-light); color: var(--purple); background: rgba(142,74,151,0.04); }
+  .btn-ghost svg { width: 16px; height: 16px; }
+  .btn-primary {
+    display: flex; align-items: center; gap: 6px;
+    padding: 0.55rem 1.3rem;
+    font-family: var(--font-body); font-size: 13.5px; font-weight: 500;
+    color: white;
+    background: var(--purple);
+    border: none;
+    border-radius: var(--radius-xl);
+    cursor: pointer; text-decoration: none;
+    transition: all 0.25s;
+    box-shadow: 0 4px 16px rgba(142,74,151,0.28);
+  }
+  .btn-primary:hover {
+    background: var(--purple-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(142,74,151,0.36);
+  }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 2rem 80px;
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(230,179,211,0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 15% 70%, rgba(220,231,215,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 85% 80%, rgba(142,74,151,0.06) 0%, transparent 50%);
+    z-index: 0;
+  }
+  .hero-blob-1 {
+    position: absolute; width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(220,231,215,0.55) 0%, transparent 70%);
+    border-radius: 50%;
+    top: -80px; right: -60px;
+    animation: floatBlob 12s ease-in-out infinite;
+    z-index: 0;
+  }
+  .hero-blob-2 {
+    position: absolute; width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(230,179,211,0.35) 0%, transparent 70%);
+    border-radius: 50%;
+    bottom: 40px; left: -100px;
+    animation: floatBlob 16s ease-in-out infinite reverse;
+    z-index: 0;
+  }
+  @keyframes floatBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.05); }
+    66% { transform: translate(-15px, 20px) scale(0.97); }
+  }
+  .hero-container {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px;
+    background: rgba(220,231,215,0.7);
+    border: 1px solid rgba(127,168,122,0.35);
+    border-radius: var(--radius-xl);
+    font-size: 12.5px; font-weight: 500;
+    color: var(--sage-deeper);
+    margin-bottom: 1.5rem;
+    animation: fadeSlideUp 0.8s var(--transition) both;
+  }
+  .hero-badge-dot {
+    width: 7px; height: 7px;
+    background: var(--sage-deeper);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 5.5vw, 68px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--charcoal);
+    margin-bottom: 1.25rem;
+    animation: fadeSlideUp 0.8s 0.1s var(--transition) both;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--purple);
+  }
+  .hero-sub {
+    font-size: 16px; font-weight: 300;
+    color: var(--charcoal-soft);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 2.25rem;
+    animation: fadeSlideUp 0.8s 0.2s var(--transition) both;
+  }
+  .hero-actions {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 3rem;
+    animation: fadeSlideUp 0.8s 0.3s var(--transition) both;
+  }
+  .btn-hero-primary {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-body); font-size: 15px; font-weight: 500;
+    color: white;
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    border: none; border-radius: var(--radius-xl);
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 8px 28px rgba(142,74,151,0.3);
+    transition: all 0.3s;
+    letter-spacing: 0.2px;
+  }
+  .btn-hero-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(142,74,151,0.42);
+  }
+  .btn-hero-secondary {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0.85rem 1.75rem;
+    font-family: var(--font-body); font-size: 15px; font-weight: 400;
+    color: var(--charcoal);
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    cursor: pointer; text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-hero-secondary:hover { border-color: var(--sage-dark); background: var(--sage); }
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    animation: fadeSlideUp 0.8s 0.4s var(--transition) both;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 2px; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 26px; font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--gray-mid); letter-spacing: 0.3px; }
+  .stat-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+  /* ── PHONE MOCKUP ── */
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+    animation: fadeSlideRight 1s 0.2s var(--transition) both;
+  }
+  @keyframes fadeSlideRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .phone-wrap {
+    position: relative;
+    animation: floatPhone 6s ease-in-out infinite;
+  }
+  @keyframes floatPhone {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-14px) rotate(-3deg); }
+  }
+  .phone-frame {
+    width: 270px;
+    background: var(--charcoal);
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow: 0 40px 80px rgba(44,44,44,0.25), 0 0 0 1px rgba(255,255,255,0.08) inset;
+    position: relative; z-index: 2;
+  }
+  .phone-screen {
+    background: white;
+    border-radius: 34px;
+    overflow: hidden;
+    height: 520px;
+    position: relative;
+  }
+  .phone-notch {
+    position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 28px;
+    background: var(--charcoal);
+    border-radius: 0 0 18px 18px;
+    z-index: 10;
+  }
+  .invite-preview {
+    height: 100%;
+    background: linear-gradient(180deg, #1a0a24 0%, #2d1540 60%, #4a2060 100%);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 50px 20px 24px;
+    position: relative; overflow: hidden;
+  }
+  .invite-bg-pattern {
+    position: absolute; inset: 0;
+    background-image: 
+      radial-gradient(circle at 30% 20%, rgba(230,179,211,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 70% 80%, rgba(220,231,215,0.1) 0%, transparent 40%);
+  }
+  .invite-ornament {
+    font-family: var(--font-display);
+    font-size: 26px; color: rgba(230,179,211,0.5);
+    margin-bottom: 6px;
+    letter-spacing: 4px;
+    position: relative;
+  }
+  .invite-bismillah {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: rgba(230,179,211,0.7);
+    text-align: center;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .invite-divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(230,179,211,0.5), transparent);
+    margin-bottom: 14px; position: relative;
+  }
+  .invite-names {
+    font-family: var(--font-display);
+    font-size: 30px; font-weight: 400;
+    color: white; line-height: 1.2;
+    text-align: center;
+    margin-bottom: 4px; position: relative;
+  }
+  .invite-names em { color: var(--pink); font-style: italic; }
+  .invite-couple {
+    font-family: var(--font-display);
+    font-size: 13px; color: rgba(220,231,215,0.65);
+    text-align: center; letter-spacing: 2px;
+    margin-bottom: 14px; position: relative;
+  }
+  .invite-date-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 12px 20px;
+    text-align: center; position: relative;
+    width: 100%;
+  }
+  .invite-date { font-size: 11px; color: rgba(220,231,215,0.6); letter-spacing: 2px; margin-bottom: 4px; }
+  .invite-date-num {
+    font-family: var(--font-display);
+    font-size: 22px; color: white; font-weight: 400;
+  }
+  .invite-date-month {
+    font-family: var(--font-display);
+    font-size: 14px; color: var(--pink); letter-spacing: 1px;
+  }
+  .invite-countdown {
+    display: flex; gap: 10px; margin-top: 12px; position: relative;
+  }
+  .countdown-box {
+    flex: 1; background: rgba(142,74,151,0.3); border-radius: 10px;
+    padding: 7px 4px; text-align: center;
+    border: 1px solid rgba(142,74,151,0.25);
+  }
+  .countdown-num { font-family: var(--font-display); font-size: 18px; color: white; display: block; line-height: 1; }
+  .countdown-label { font-size: 8.5px; color: rgba(220,231,215,0.5); letter-spacing: 1px; display: block; margin-top: 2px; }
+  .invite-rsvp-btn {
+    margin-top: 14px; width: 100%;
+    background: linear-gradient(135deg, var(--purple), #b44fc2);
+    border: none; border-radius: 12px;
+    padding: 11px;
+    font-family: var(--font-body);
+    font-size: 12px; font-weight: 500; color: white;
+    cursor: pointer; position: relative;
+    letter-spacing: 0.5px;
+  }
+  .phone-deco-1 {
+    position: absolute;
+    top: 60px; right: -50px;
+    width: 120px; height: 120px;
+    background: var(--sage);
+    border-radius: 50%;
+    opacity: 0.6;
+    z-index: 1;
+    animation: floatBlob 8s ease-in-out infinite;
+  }
+  .phone-deco-2 {
+    position: absolute;
+    bottom: 80px; left: -40px;
+    width: 80px; height: 80px;
+    background: var(--pink-light);
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 1;
+    animation: floatBlob 10s ease-in-out infinite reverse;
+  }
+  .phone-label {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 8px 14px;
+    box-shadow: var(--shadow-md);
+    font-size: 12px; font-weight: 500; color: var(--charcoal);
+    display: flex; align-items: center; gap: 7px;
+    z-index: 3;
+  }
+  .label-icon { font-size: 14px; }
+  .label-rsvp { top: 90px; right: -90px; }
+  .label-share { bottom: 140px; left: -90px; }
+  .label-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-green { background: #4CAF50; }
+  .dot-blue { background: var(--purple); }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 90px 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 5px 14px;
+    background: rgba(230,179,211,0.25);
+    border: 1px solid rgba(201,125,176,0.3);
+    border-radius: var(--radius-xl);
+    font-size: 12px; font-weight: 500;
+    color: var(--pink-dark);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 400; line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+  }
+  .section-title em { font-style: italic; color: var(--purple); }
+  .section-sub {
+    font-size: 15px; font-weight: 300;
+    color: var(--charcoal-soft);
+    line-height: 1.75; max-width: 520px;
+  }
+  .text-center { text-align: center; }
+  .text-center .section-sub { margin: 0 auto; }
+
+  /* ── TEMPLATES ── */
+  .templates-section { background: white; }
+  .templates-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .category-tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .cat-tab {
+    padding: 6px 16px;
+    font-family: var(--font-body); font-size: 13px; font-weight: 400;
+    color: var(--charcoal-soft);
+    background: var(--gray-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .cat-tab.active, .cat-tab:hover {
+    background: var(--purple); color: white; border-color: var(--purple);
+  }
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .template-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.35s var(--transition);
+    cursor: pointer;
+    position: relative;
+  }
+  .template-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(142,74,151,0.2);
+  }
+  .template-thumb {
+    height: 200px;
+    position: relative; overflow: hidden;
+  }
+  .template-thumb-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    position: relative;
+  }
+  .tmpl-1 { background: linear-gradient(135deg, #1a0a24, #4a2060); }
+  .tmpl-2 { background: linear-gradient(135deg, #0d2416, #1a4528); }
+  .tmpl-3 { background: linear-gradient(135deg, #1a1020, #3d1845); }
+  .tmpl-4 { background: linear-gradient(135deg, #0a1628, #1e3a5f); }
+  .tmpl-5 { background: linear-gradient(135deg, #261010, #5c1a1a); }
+  .tmpl-6 { background: linear-gradient(135deg, #1a0d28, #3a1060); }
+  .tmpl-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(142,74,151,0.12);
+    opacity: 0; transition: 0.3s;
+    gap: 0.75rem;
+  }
+  .template-card:hover .tmpl-overlay { opacity: 1; }
+  .tmpl-btn {
+    padding: 8px 18px;
+    font-family: var(--font-body); font-size: 12.5px; font-weight: 500;
+    border-radius: var(--radius-xl);
+    cursor: pointer; border: none;
+    transition: all 0.2s;
+  }
+  .tmpl-btn-preview { background: white; color: var(--charcoal); }
+  .tmpl-btn-pick { background: var(--purple); color: white; }
+  .template-thumb-content {
+    text-align: center; color: white; padding: 20px;
+  }
+  .tmpl-ornament { font-size: 20px; opacity: 0.4; margin-bottom: 6px; letter-spacing: 4px; }
+  .tmpl-name-preview { font-size: 22px; font-weight: 300; margin-bottom: 4px; }
+  .tmpl-couple-preview { font-size: 11px; opacity: 0.5; letter-spacing: 2px; }
+  .template-info { padding: 1.1rem 1.25rem; }
+  .template-name { font-size: 15px; font-weight: 500; color: var(--charcoal); margin-bottom: 4px; }
+  .template-meta { display: flex; align-items: center; justify-content: space-between; }
+  .template-category {
+    font-size: 11.5px; color: var(--purple);
+    background: rgba(142,74,151,0.08);
+    padding: 3px 10px; border-radius: 99px;
+  }
+  .template-price { font-size: 13px; font-weight: 500; color: var(--charcoal); }
+  .badge-premium {
+    position: absolute; top: 10px; right: 10px;
+    background: linear-gradient(135deg, #c9a227, #e8c060);
+    color: white; font-size: 10px; font-weight: 600;
+    padding: 3px 10px; border-radius: 99px;
+    letter-spacing: 0.5px;
+  }
+  .badge-new {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--purple); color: white;
+    font-size: 10px; font-weight: 500;
+    padding: 3px 10px; border-radius: 99px;
+  }
+  .see-all-wrap { text-align: center; margin-top: 2.5rem; }
+
+  /* ── FEATURES ── */
+  .features-section {
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem; margin-top: 3rem;
+  }
+  .feature-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: all 0.3s;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(220,231,215,0.8);
+  }
+  .feature-icon {
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .fi-sage { background: rgba(220,231,215,0.6); }
+  .fi-pink { background: rgba(230,179,211,0.35); }
+  .fi-purple { background: rgba(142,74,151,0.1); }
+  .feature-text h4 { font-size: 15px; font-weight: 500; color: var(--charcoal); margin-bottom: 5px; }
+  .feature-text p { font-size: 13.5px; font-weight: 300; color: var(--charcoal-soft); line-height: 1.6; }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: white; }
+  .steps-container {
+    display: flex; gap: 0;
+    margin-top: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .steps-container::before {
+    content: '';
+    position: absolute;
+    top: 32px; left: 32px; right: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--sage), var(--pink), var(--purple-light));
+  }
+  .step-item {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 1rem;
+    position: relative;
+  }
+  .step-num {
+    width: 64px; height: 64px;
+    background: white;
+    border: 3px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 400;
+    color: var(--purple);
+    margin-bottom: 1.25rem;
+    position: relative; z-index: 1;
+    transition: all 0.3s;
+  }
+  .step-item:hover .step-num {
+    background: var(--purple); color: white;
+    border-color: var(--purple);
+    transform: scale(1.1);
+  }
+  .step-emoji { font-size: 22px; }
+  .step-title { font-size: 14.5px; font-weight: 500; color: var(--charcoal); margin-bottom: 6px; }
+  .step-desc { font-size: 13px; font-weight: 300; color: var(--gray-mid); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--cream); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem; margin-top: 3rem;
+  }
+  .testi-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .testi-stars { color: #f59e0b; font-size: 14px; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text {
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 300;
+    font-style: italic;
+    color: var(--charcoal); line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 500;
+  }
+  .av-1 { background: var(--sage); color: var(--sage-deeper); }
+  .av-2 { background: rgba(230,179,211,0.4); color: var(--pink-dark); }
+  .av-3 { background: rgba(142,74,151,0.1); color: var(--purple); }
+  .av-4 { background: rgba(220,231,215,0.5); color: var(--sage-deeper); }
+  .av-5 { background: rgba(230,179,211,0.3); color: var(--pink-dark); }
+  .av-6 { background: rgba(142,74,151,0.12); color: var(--purple); }
+  .testi-name { font-size: 14px; font-weight: 500; color: var(--charcoal); }
+  .testi-event { font-size: 12px; color: var(--gray-mid); }
+  .testi-quote-mark {
+    position: absolute; top: 20px; right: 24px;
+    font-family: var(--font-display);
+    font-size: 60px; line-height: 1;
+    color: rgba(220,231,215,0.6);
+    font-weight: 300;
+  }
+
+  /* ── PRICING ── */
+  .pricing-section {
+    background: linear-gradient(180deg, white 0%, var(--cream) 100%);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+    align-items: start;
+  }
+  .price-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: all 0.35s;
+    position: relative;
+  }
+  .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+  .price-card.featured {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 1px var(--purple), var(--shadow-md);
+    transform: scale(1.03);
+    z-index: 2;
+  }
+  .price-card.featured:hover { transform: scale(1.03) translateY(-5px); }
+  .featured-badge {
+    position: absolute; top: -14px; left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--purple), var(--pink-dark));
+    color: white; font-size: 11px; font-weight: 500;
+    padding: 4px 18px; border-radius: 99px;
+    white-space: nowrap;
+  }
+  .price-plan { font-size: 12.5px; font-weight: 500; color: var(--gray-mid); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .price-amount {
+    display: flex; align-items: baseline; gap: 4px;
+    margin-bottom: 0.5rem;
+  }
+  .price-currency { font-size: 16px; color: var(--charcoal); font-weight: 400; }
+  .price-num {
+    font-family: var(--font-display);
+    font-size: 42px; font-weight: 400; color: var(--charcoal);
+    line-height: 1;
+  }
+  .price-num.featured-num { color: var(--purple); }
+  .price-period { font-size: 13px; color: var(--gray-mid); }
+  .price-desc { font-size: 13px; color: var(--gray-mid); margin-bottom: 1.5rem; line-height: 1.5; }
+  .price-divider { height: 1px; background: var(--border); margin-bottom: 1.5rem; }
+  .price-features { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .price-features li {
+    font-size: 13.5px; font-weight: 300; color: var(--charcoal-soft);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .price-features li::before {
+    content: '✓'; font-size: 12px; font-weight: 600;
+    color: var(--sage-deeper); flex-shrink: 0; margin-top: 2px;
+  }
+  .price-features li.disabled { color: var(--gray-mid); }
+  .price-features li.disabled::before { content: '—'; color: var(--border); }
+  .btn-price {
+    width: 100%; padding: 0.8rem;
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    border-radius: var(--radius-xl);
+    cursor: pointer; transition: all 0.25s; text-align: center;
+    text-decoration: none; display: block;
+  }
+  .btn-price-outline {
+    background: white; color: var(--charcoal);
+    border: 1px solid var(--border);
+  }
+  .btn-price-outline:hover { border-color: var(--purple); color: var(--purple); }
+  .btn-price-solid { background: var(--purple); color: white; border: none; box-shadow: 0 4px 20px rgba(142,74,151,0.28); }
+  .btn-price-solid:hover { background: var(--purple-dark); transform: translateY(-1px); }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--cream); }
+  .faq-list { max-width: 720px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; padding: 1.2rem 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    background: none; border: none; cursor: pointer;
+    font-family: var(--font-body); font-size: 15px; font-weight: 400;
+    color: var(--charcoal); text-align: left; transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--purple); }
+  .faq-icon {
+    width: 28px; height: 28px; flex-shrink: 0;
+    background: var(--gray-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; transition: all 0.3s; color: var(--charcoal-soft);
+  }
+  .faq-item.open .faq-icon { background: var(--purple); color: white; transform: rotate(45deg); }
+  .faq-a {
+    font-size: 14px; font-weight: 300; color: var(--charcoal-soft);
+    line-height: 1.8; overflow: hidden; max-height: 0;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.2rem; }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    padding: 80px 2rem;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 40%, #3d1a4a 100%);
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 80% at 20% 50%, rgba(220,231,215,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 80% 50%, rgba(230,179,211,0.1) 0%, transparent 60%);
+  }
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400; color: white;
+    line-height: 1.2; margin-bottom: 1rem;
+    position: relative;
+  }
+  .cta-band h2 em { font-style: italic; color: var(--pink-light); }
+  .cta-band p {
+    font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.7);
+    margin-bottom: 2.5rem; position: relative;
+  }
+  .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+  .btn-cta-white {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-body); font-size: 15px; font-weight: 500;
+    color: var(--purple); background: white;
+    border: none; border-radius: var(--radius-xl);
+    cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  }
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.2); }
+  .btn-cta-outline {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-body); font-size: 15px; font-weight: 400;
+    color: white; background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: var(--radius-xl);
+    cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--charcoal);
+    padding: 64px 2rem 32px;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand .logo-text { color: white; }
+  .footer-brand .logo-text span { color: var(--pink-light); }
+  .footer-tagline { font-size: 13.5px; color: rgba(255,255,255,0.45); line-height: 1.7; margin: 1rem 0 1.5rem; font-weight: 300; }
+  .footer-socials { display: flex; gap: 0.6rem; }
+  .social-icon {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer;
+  }
+  .social-icon:hover { background: var(--purple); color: white; }
+  .footer-col h5 { font-size: 13px; font-weight: 500; color: white; margin-bottom: 1.25rem; letter-spacing: 0.5px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 300; }
+  .footer-links a:hover { color: white; }
+  .footer-contact-item { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 0.7rem; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12.5px; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 0.5rem;
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(44,44,44,0.6);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 1rem;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    width: 100%; max-width: 420px;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.35s var(--transition);
+    position: relative;
+  }
+  .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+  .modal-close {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: var(--gray-light); border: none; border-radius: 50%;
+    width: 32px; height: 32px; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--charcoal-soft); transition: all 0.2s;
+  }
+  .modal-close:hover { background: var(--border); }
+  .modal-logo { text-align: center; margin-bottom: 1.5rem; }
+  .modal-title {
+    font-family: var(--font-display);
+    font-size: 28px; font-weight: 400; text-align: center;
+    color: var(--charcoal); margin-bottom: 0.5rem; line-height: 1.2;
+  }
+  .modal-sub { font-size: 14px; color: var(--gray-mid); text-align: center; margin-bottom: 2rem; font-weight: 300; }
+  .btn-google {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 0.9rem;
+    font-family: var(--font-body); font-size: 14.5px; font-weight: 500;
+    color: var(--charcoal);
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer; margin-bottom: 1rem;
+    transition: all 0.25s;
+  }
+  .btn-google:hover { border-color: #4285f4; box-shadow: 0 4px 16px rgba(66,133,244,0.15); }
+  .modal-divider { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .modal-divider::before, .modal-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .modal-divider span { font-size: 12px; color: var(--gray-mid); }
+  .modal-tnc { font-size: 11.5px; color: var(--gray-mid); text-align: center; line-height: 1.7; }
+  .modal-tnc a { color: var(--purple); text-decoration: none; }
+
+  /* ── DASHBOARD PREVIEW ── */
+  .dashboard-section { background: white; }
+  .dashboard-preview {
+    background: var(--gray-light);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin-top: 3rem;
+    overflow: hidden;
+  }
+  .dash-topbar {
+    background: white; border-radius: var(--radius-md);
+    padding: 1rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .dash-logo { font-family: var(--font-display); font-size: 18px; font-weight: 500; }
+  .dash-logo span { color: var(--purple); }
+  .dash-user { display: flex; align-items: center; gap: 10px; }
+  .dash-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--pink-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 14px; font-weight: 500; color: white;
+  }
+  .dash-username { font-size: 13.5px; font-weight: 400; color: var(--charcoal); }
+  .dash-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .dash-stat {
+    background: white; border-radius: var(--radius-md); padding: 1.1rem 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .dash-stat-label { font-size: 11.5px; color: var(--gray-mid); margin-bottom: 6px; letter-spacing: 0.3px; }
+  .dash-stat-num {
+    font-family: var(--font-display);
+    font-size: 28px; font-weight: 400; color: var(--charcoal); line-height: 1;
+  }
+  .dash-stat-num.purple { color: var(--purple); }
+  .dash-stat-trend { font-size: 11px; color: var(--sage-deeper); margin-top: 3px; }
+  .dash-content { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1rem; }
+  .dash-invite-list { background: white; border-radius: var(--radius-md); padding: 1.25rem; box-shadow: var(--shadow-sm); }
+  .dash-section-title { font-size: 13px; font-weight: 500; color: var(--charcoal); margin-bottom: 1rem; }
+  .invite-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .invite-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .invite-thumb-mini {
+    width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 11px; color: rgba(255,255,255,0.8);
+  }
+  .inv-1 { background: linear-gradient(135deg, #1a0a24, #4a2060); }
+  .inv-2 { background: linear-gradient(135deg, #0d2416, #1a4528); }
+  .inv-3 { background: linear-gradient(135deg, #0a1628, #1e3a5f); }
+  .invite-row-info { flex: 1; min-width: 0; }
+  .invite-row-name { font-size: 13px; font-weight: 500; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .invite-row-date { font-size: 11.5px; color: var(--gray-mid); }
+  .invite-row-status {
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 99px;
+  }
+  .status-active { background: rgba(220,231,215,0.6); color: var(--sage-deeper); }
+  .status-draft { background: rgba(255,210,130,0.3); color: #9a7200; }
+  .status-exp { background: rgba(255,100,100,0.12); color: #c23b3b; }
+  .dash-rsvp { background: white; border-radius: var(--radius-md); padding: 1.25rem; box-shadow: var(--shadow-sm); }
+  .rsvp-chart { margin-top: 1rem; }
+  .rsvp-bar { margin-bottom: 12px; }
+  .rsvp-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--charcoal-soft); margin-bottom: 5px; }
+  .rsvp-bar-track { height: 8px; background: var(--gray-light); border-radius: 99px; overflow: hidden; }
+  .rsvp-bar-fill { height: 100%; border-radius: 99px; transition: width 1.2s ease; }
+  .fill-green { background: linear-gradient(90deg, var(--sage-dark), var(--sage-deeper)); }
+  .fill-red { background: linear-gradient(90deg, #f8b4b4, #e05050); }
+  .fill-gray { background: linear-gradient(90deg, #d0d0d0, #a0a0a0); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--transition), transform 0.7s var(--transition); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hero-container { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .hero-sub { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-visual { order: -1; }
+    .phone-wrap { animation-name: floatPhone2; }
+    @keyframes floatPhone2 { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(-2deg); } }
+    .label-rsvp { right: -60px; }
+    .label-share { left: -60px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .steps-container::before { display: none; }
+    .steps-container { flex-direction: column; gap: 1.5rem; }
+    .dash-grid { grid-template-columns: 1fr 1fr; }
+    .dash-content { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .nav-links, .btn-ghost { display: none; }
+    .nav-hamburger { display: flex; }
+    section { padding: 60px 1.25rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .phone-frame { width: 220px; }
+    .phone-screen { height: 420px; }
+    .label-rsvp, .label-share { display: none; }
+    .hero-stats { gap: 1.25rem; flex-wrap: wrap; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .price-card.featured { transform: none; }
+    .price-card.featured:hover { transform: translateY(-5px); }
+  }
+  @media (max-width: 480px) {
+    .dash-grid { grid-template-columns: 1fr 1fr; }
+    .dashboard-preview { padding: 1rem; }
+    .template-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">I</div>
+    <span class="logo-text">Invit<span>ara</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#templates">Template</a></li>
+    <li><a href="#pricing">Harga</a></li>
+    <li><a href="#how">Cara Kerja</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-ghost" onclick="openModal()">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Masuk Google
+    </button>
+    <a href="#" class="btn-primary" onclick="openModal(); return false;">✦ Buat Undangan</a>
+    <button class="nav-hamburger" onclick="toggleMobileMenu()">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="#2C2C2C"/><rect y="10" width="22" height="2" rx="1" fill="#2C2C2C"/><rect y="16" width="22" height="2" rx="1" fill="#2C2C2C"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="hero-badge-dot"></span> Platform Undangan #1 Indonesia</div>
+      <h1 class="hero-headline">Buat Undangan Digital <em>Elegan</em> dalam Hitungan Menit</h1>
+      <p class="hero-sub">Template premium, RSVP otomatis, personalisasi nama tamu, dan berbagi link instan. Undangan digital yang membuat momen spesialmu tak terlupakan.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-hero-primary" onclick="openModal(); return false;">
+          ✦ Mulai Gratis Sekarang
+        </a>
+        <a href="#templates" class="btn-hero-secondary">
+          Lihat Template →
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">50K+</span>
+          <span class="stat-label">Undangan Dibuat</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">120+</span>
+          <span class="stat-label">Template Premium</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">4.9★</span>
+          <span class="stat-label">Rating Pengguna</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone-deco-1"></div>
+        <div class="phone-deco-2"></div>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="invite-preview">
+              <div class="invite-bg-pattern"></div>
+              <div class="invite-ornament">✦ ✦ ✦</div>
+              <div class="invite-bismillah">Bismillahirrahmanirrahim</div>
+              <div class="invite-divider"></div>
+              <div class="invite-names">Rizky &amp; <em>Anindita</em></div>
+              <div class="invite-couple">INTIMATE WEDDING</div>
+              <div class="invite-date-box">
+                <div class="invite-date">SABTU, DESEMBER 2025</div>
+                <div class="invite-date-num">14</div>
+                <div class="invite-date-month">Desember 2025</div>
+                <div class="invite-countdown">
+                  <div class="countdown-box"><span class="countdown-num" id="cd-days">47</span><span class="countdown-label">HARI</span></div>
+                  <div class="countdown-box"><span class="countdown-num" id="cd-hrs">08</span><span class="countdown-label">JAM</span></div>
+                  <div class="countdown-box"><span class="countdown-num" id="cd-min">32</span><span class="countdown-label">MENIT</span></div>
+                  <div class="countdown-box"><span class="countdown-num" id="cd-sec">15</span><span class="countdown-label">DETIK</span></div>
+                </div>
+              </div>
+              <button class="invite-rsvp-btn">💌 Konfirmasi Kehadiran</button>
+            </div>
+          </div>
+        </div>
+        <div class="phone-label label-rsvp">
+          <span class="label-dot dot-green"></span>
+          <span>247 Tamu Hadir</span>
+        </div>
+        <div class="phone-label label-share">
+          <span class="label-dot dot-blue"></span>
+          <span>Link Dibagikan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEMPLATES ── -->
+<section class="templates-section" id="templates">
+  <div class="container">
+    <div class="templates-header">
+      <div>
+        <div class="section-badge">✦ Katalog Template</div>
+        <h2 class="section-title">Pilih Template <em>Favoritmu</em></h2>
+        <p class="section-sub">120+ desain premium siap pakai, dirancang oleh desainer profesional Indonesia.</p>
+        <div class="category-tabs">
+          <button class="cat-tab active" onclick="filterCat(this, 'all')">Semua</button>
+          <button class="cat-tab" onclick="filterCat(this, 'wedding')">💍 Pernikahan</button>
+          <button class="cat-tab" onclick="filterCat(this, 'khitanan')">🌙 Khitanan</button>
+          <button class="cat-tab" onclick="filterCat(this, 'birthday')">🎂 Ulang Tahun</button>
+          <button class="cat-tab" onclick="filterCat(this, 'aqiqah')">🤲 Aqiqah</button>
+          <button class="cat-tab" onclick="filterCat(this, 'corporate')">💼 Corporate</button>
+        </div>
+      </div>
+    </div>
+    <div class="template-grid">
+      <div class="template-card" data-cat="wedding">
+        <div class="template-thumb">
+          <div class="template-thumb-inner tmpl-1">
+            <div class="template-thumb-content">
+              <div class="tmpl-ornament">✦ ✦ ✦</div>
+              <div class="tmpl-name-preview">Amara &amp; Rafif</div>
+              <div class="tmpl-couple-preview">THE WEDDING</div>
+            </div>
+          </div>
+          <div class="tmpl-overlay">
+            <button class="tmpl-btn tmpl-btn-preview" onclick="openModal()">Preview</button>
+            <button class="tmpl-btn tmpl-btn-pick" onclick="openModal()">Pilih</button>
+          </div>
+          <span class="badge-premium">Premium</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Amara Midnight</div>
+          <div class="template-meta">
+            <span class="template-category">Pernikahan</span>
+            <span class="template-price">Rp 89.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="template-card" data-cat="wedding">
+        <div class="template-thumb">
+          <div class="template-thumb-inner tmpl-2">
+            <div class="template-thumb-content">
+              <div class="tmpl-ornament">— ✿ —</div>
+              <div class="tmpl-name-preview">Hana &amp; Dimas</div>
+              <div class="tmpl-couple-preview">SACRED UNION</div>
+            </div>
+          </div>
+          <div class="tmpl-overlay">
+            <button class="tmpl-btn tmpl-btn-preview" onclick="openModal()">Preview</button>
+            <button class="tmpl-btn tmpl-btn-pick" onclick="openModal()">Pilih</button>
+          </div>
+          <span class="badge-new">Baru</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Hana Forest</div>
+          <div class="template-meta">
+            <span class="template-category">Pernikahan</span>
+            <span class="template-price">Rp 89.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="template-card" data-cat="birthday">
+        <div class="template-thumb">
+          <div class="template-thumb-inner tmpl-3">
+            <div class="template-thumb-content">
+              <div class="tmpl-ornament">🎂</div>
+              <div class="tmpl-name-preview">Sekar Turns 7</div>
+              <div class="tmpl-couple-preview">BIRTHDAY PARTY</div>
+            </div>
+          </div>
+          <div class="tmpl-overlay">
+            <button class="tmpl-btn tmpl-btn-preview" onclick="openModal()">Preview</button>
+            <button class="tmpl-btn tmpl-btn-pick" onclick="openModal()">Pilih</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Starry Night Kids</div>
+          <div class="template-meta">
+            <span class="template-category">Ulang Tahun</span>
+            <span class="template-price">Rp 69.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="template-card" data-cat="wedding">
+        <div class="template-thumb">
+          <div class="template-thumb-inner tmpl-4">
+            <div class="template-thumb-content">
+              <div class="tmpl-ornament">◇ ◆ ◇</div>
+              <div class="tmpl-name-preview">Keira &amp; Aditya</div>
+              <div class="tmpl-couple-preview">INTIMATE WEDDING</div>
+            </div>
+          </div>
+          <div class="tmpl-overlay">
+            <button class="tmpl-btn tmpl-btn-preview" onclick="openModal()">Preview</button>
+            <button class="tmpl-btn tmpl-btn-pick" onclick="openModal()">Pilih</button>
+          </div>
+          <span class="badge-premium">Premium</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Ocean Blue Elegance</div>
+          <div class="template-meta">
+            <span class="template-category">Pernikahan</span>
+            <span class="template-price">Rp 129.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="template-card" data-cat="khitanan">
+        <div class="template-thumb">
+          <div class="template-thumb-inner tmpl-5">
+            <div class="template-thumb-content">
+              <div class="tmpl-ornament">🌙 ★ 🌙</div>
+              <div class="tmpl-name-preview">Raffa Al-Farisi</div>
+              <div class="tmpl-couple-preview">AQIQAH & KHITAN</div>
+            </div>
+          </div>
+          <div class="tmpl-overlay">
+            <button class="tmpl-btn tmpl-btn-preview" onclick="openModal()">Preview</button>
+            <button class="tmpl-btn tmpl-btn-pick" onclick="openModal()">Pilih</button>
+          </div>
+          <span class="badge-new">Baru</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Crescent Islamic</div>
+          <div class="template-meta">
+            <span class="template-category">Khitanan</span>
+            <span class="template-price">Rp 69.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="template-card" data-cat="corporate">
+        <div class="template-thumb">
+          <div class="template-thumb-inner tmpl-6">
+            <div class="template-thumb-content">
+              <div class="tmpl-ornament">⬡</div>
+              <div class="tmpl-name-preview">Annual Gala 2025</div>
+              <div class="tmpl-couple-preview">CORPORATE EVENT</div>
+            </div>
+          </div>
+          <div class="tmpl-overlay">
+            <button class="tmpl-btn tmpl-btn-preview" onclick="openModal()">Preview</button>
+            <button class="tmpl-btn tmpl-btn-pick" onclick="openModal()">Pilih</button>
+          </div>
+          <span class="badge-premium">Premium</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Corporate Luxe</div>
+          <div class="template-meta">
+            <span class="template-category">Corporate</span>
+            <span class="template-price">Rp 149.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="see-all-wrap">
+      <a href="#" class="btn-hero-secondary" onclick="openModal(); return false;">Lihat Semua 120+ Template →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features-section" id="features">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-badge">✦ Keunggulan</div>
+      <h2 class="section-title">Semua yang Kamu Butuhkan, <em>Sudah Ada</em></h2>
+      <p class="section-sub">Fitur lengkap untuk undangan digital yang profesional dan berkesan.</p>
+    </div>
+    <div class="features-grid reveal" style="transition-delay: 0.1s">
+      <div class="feature-card">
+        <div class="feature-icon fi-purple">📋</div>
+        <div class="feature-text"><h4>RSVP Otomatis</h4><p>Tamu konfirmasi kehadiran langsung di undangan. Data tersimpan otomatis di dashboard-mu.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-pink">👤</div>
+        <div class="feature-text"><h4>Nama Tamu Personal</h4><p>Setiap tamu mendapat undangan dengan namanya sendiri. Kesan personal yang tak terlupakan.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-sage">🎵</div>
+        <div class="feature-text"><h4>Musik Background</h4><p>Pilih lagu favorit dari koleksi kami atau upload sendiri sebagai latar undangan.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-sage">📍</div>
+        <div class="feature-text"><h4>Maps Lokasi Acara</h4><p>Integrasi Google Maps bawaan. Tamu bisa langsung navigasi ke lokasi acaramu.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-purple">⏳</div>
+        <div class="feature-text"><h4>Hitung Mundur Acara</h4><p>Countdown timer dinamis menambah kesan spesial dan urgensi pada undanganmu.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-pink">🔗</div>
+        <div class="feature-text"><h4>Share Link Instan</h4><p>Satu link untuk semua tamu. Bagikan via WhatsApp, Instagram, atau platform apapun.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-sage">📊</div>
+        <div class="feature-text"><h4>Dashboard Data Tamu</h4><p>Pantau siapa saja yang sudah buka undangan, konfirmasi hadir, dan berapa yang belum.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-purple">💬</div>
+        <div class="feature-text"><h4>Buku Ucapan Digital</h4><p>Tamu bisa meninggalkan pesan dan doa secara langsung di halaman undanganmu.</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-pink">🏦</div>
+        <div class="feature-text"><h4>Amplop Digital</h4><p>Fitur transfer hadiah dengan QR QRIS atau nomor rekening terintegrasi di undangan.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-badge">✦ Cara Kerja</div>
+      <h2 class="section-title">Mudah dalam <em>5 Langkah</em></h2>
+      <p class="section-sub">Dari memilih template hingga undangan siap dibagikan — hanya butuh beberapa menit.</p>
+    </div>
+    <div class="steps-container reveal" style="transition-delay: 0.1s">
+      <div class="step-item">
+        <div class="step-num"><span class="step-emoji">🎨</span></div>
+        <div class="step-title">Pilih Template</div>
+        <div class="step-desc">Temukan template yang paling mencerminkan kepribadianmu dari 120+ pilihan.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num"><span class="step-emoji">🔑</span></div>
+        <div class="step-title">Login Akun</div>
+        <div class="step-desc">Masuk dengan Google dalam satu klik. Aman, cepat, tanpa password.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num"><span class="step-emoji">✏️</span></div>
+        <div class="step-title">Edit Undangan</div>
+        <div class="step-desc">Isi nama, tanggal, lokasi, dan personalisasi sesuai keinginanmu.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num"><span class="step-emoji">💳</span></div>
+        <div class="step-title">Checkout Mudah</div>
+        <div class="step-desc">Bayar dengan QRIS, transfer bank, atau e-wallet favorit. Proses instan.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num"><span class="step-emoji">🚀</span></div>
+        <div class="step-title">Bagikan!</div>
+        <div class="step-desc">Undangan aktif dan siap dibagikan ke seluruh tamu dalam hitungan detik.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DASHBOARD PREVIEW ── -->
+<section class="dashboard-section" id="dashboard">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-badge">✦ Dashboard Pelanggan</div>
+      <h2 class="section-title">Pantau Semua dari Satu <em>Dashboard</em></h2>
+      <p class="section-sub">Kelola undangan, lihat statistik, dan pantau data RSVP tamu secara real-time.</p>
+    </div>
+    <div class="dashboard-preview reveal" style="transition-delay: 0.1s">
+      <div class="dash-topbar">
+        <div class="dash-logo">Invit<span>ara</span></div>
+        <div class="dash-user">
+          <div class="dash-avatar">A</div>
+          <span class="dash-username">Anindita Putri</span>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-stat">
+          <div class="dash-stat-label">Total Undangan</div>
+          <div class="dash-stat-num purple">3</div>
+          <div class="dash-stat-trend">↑ 1 baru bulan ini</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-label">Total Kunjungan</div>
+          <div class="dash-stat-num">2.847</div>
+          <div class="dash-stat-trend">↑ 12% minggu ini</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-label">Konfirmasi Hadir</div>
+          <div class="dash-stat-num">214</div>
+          <div class="dash-stat-trend">dari 310 diundang</div>
+        </div>
+        <div class="dash-stat">
+          <div class="dash-stat-label">Ucapan Diterima</div>
+          <div class="dash-stat-num">89</div>
+          <div class="dash-stat-trend">rata-rata ★ 4.9</div>
+        </div>
+      </div>
+      <div class="dash-content">
+        <div class="dash-invite-list">
+          <div class="dash-section-title">Undangan Saya</div>
+          <div class="invite-row">
+            <div class="invite-thumb-mini inv-1">💍</div>
+            <div class="invite-row-info">
+              <div class="invite-row-name">Pernikahan Anindita &amp; Rizky</div>
+              <div class="invite-row-date">14 Des 2025 · 214 tamu hadir</div>
+            </div>
+            <span class="invite-row-status status-active">Aktif</span>
+          </div>
+          <div class="invite-row">
+            <div class="invite-thumb-mini inv-2">🎂</div>
+            <div class="invite-row-info">
+              <div class="invite-row-name">Ulang Tahun Mama ke-55</div>
+              <div class="invite-row-date">3 Jan 2026 · 45 tamu hadir</div>
+            </div>
+            <span class="invite-row-status status-active">Aktif</span>
+          </div>
+          <div class="invite-row">
+            <div class="invite-thumb-mini inv-3">💼</div>
+            <div class="invite-row-info">
+              <div class="invite-row-name">Gathering Team Desember</div>
+              <div class="invite-row-date">21 Des 2025 · Draft</div>
+            </div>
+            <span class="invite-row-status status-draft">Draft</span>
+          </div>
+        </div>
+        <div class="dash-rsvp">
+          <div class="dash-section-title">Statistik RSVP</div>
+          <div class="rsvp-chart">
+            <div class="rsvp-bar">
+              <div class="rsvp-bar-label"><span>Hadir</span><span>214 (69%)</span></div>
+              <div class="rsvp-bar-track"><div class="rsvp-bar-fill fill-green" style="width:69%"></div></div>
+            </div>
+            <div class="rsvp-bar">
+              <div class="rsvp-bar-label"><span>Tidak Hadir</span><span>48 (15%)</span></div>
+              <div class="rsvp-bar-track"><div class="rsvp-bar-fill fill-red" style="width:15%"></div></div>
+            </div>
+            <div class="rsvp-bar">
+              <div class="rsvp-bar-label"><span>Belum Konfirmasi</span><span>48 (16%)</span></div>
+              <div class="rsvp-bar-track"><div class="rsvp-bar-fill fill-gray" style="width:16%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" id="testimoni">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-badge">✦ Testimoni</div>
+      <h2 class="section-title">Dipercaya Ribuan <em>Pasangan Bahagia</em></h2>
+      <p class="section-sub">Apa kata mereka yang sudah menggunakan Invitara untuk momen spesial mereka.</p>
+    </div>
+    <div class="testimonials-grid reveal" style="transition-delay: 0.1s">
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Templatenya cantik banget, persis sesuai tema pernikahan kami. Tamu-tamu pada terpesona, banyak yang tanya buat di mana!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar av-1">SA</div>
+          <div>
+            <div class="testi-name">Sari Amelia</div>
+            <div class="testi-event">Pernikahan · Jakarta, Nov 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Fitur nama personal per tamu itu keren banget! Tamu merasa dihargai banget. RSVP-nya juga gampang, data langsung masuk dashboard."</div>
+        <div class="testi-author">
+          <div class="testi-avatar av-2">RH</div>
+          <div>
+            <div class="testi-name">Rizal Hakim</div>
+            <div class="testi-event">Pernikahan · Surabaya, Okt 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Buat undangan khitanan anak, prosesnya super cepat! 15 menit udah jadi dan tinggal share WA. Worth it banget harganya."</div>
+        <div class="testi-author">
+          <div class="testi-avatar av-3">MD</div>
+          <div>
+            <div class="testi-name">Muhamad Daffa</div>
+            <div class="testi-event">Khitanan · Bandung, Sep 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Dashboard-nya informatif banget. Bisa pantau siapa aja yang sudah buka undangan dan berapa yang konfirmasi hadir. Sangat membantu planning!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar av-4">LN</div>
+          <div>
+            <div class="testi-name">Laras Ningtyas</div>
+            <div class="testi-event">Pernikahan · Yogyakarta, Ags 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★☆</div>
+        <div class="testi-text">"Untuk corporate event, template-nya profesional dan elegan. Tim kami terkesan dengan tampilan undangan gala dinner tahun ini."</div>
+        <div class="testi-author">
+          <div class="testi-avatar av-5">FP</div>
+          <div>
+            <div class="testi-name">Fitria Pertiwi</div>
+            <div class="testi-event">Corporate Event · Jakarta, Jul 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Support-nya responsif banget. Ada pertanyaan jam 10 malam, langsung dijawab. Undangannya juga loading cepat, tidak lemot di HP tamu."</div>
+        <div class="testi-author">
+          <div class="testi-avatar av-6">BK</div>
+          <div>
+            <div class="testi-name">Bima Kurnia</div>
+            <div class="testi-event">Aqiqah · Medan, Jun 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-badge">✦ Paket Harga</div>
+      <h2 class="section-title">Harga Transparan, <em>Tanpa Kejutan</em></h2>
+      <p class="section-sub">Pilih paket yang sesuai kebutuhanmu. Semua paket sudah termasuk RSVP dan fitur dasar.</p>
+    </div>
+    <div class="pricing-grid reveal" style="transition-delay: 0.1s">
+      <div class="price-card">
+        <div class="price-plan">Basic</div>
+        <div class="price-amount">
+          <span class="price-currency">Rp</span>
+          <span class="price-num">69<small style="font-size:20px">.000</small></span>
+        </div>
+        <div class="price-desc">Per undangan · Aktif 3 bulan<br>Cocok untuk acara sederhana</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>1 template pilihan</li>
+          <li>Nama tamu personal</li>
+          <li>RSVP otomatis (maks. 200 tamu)</li>
+          <li>Hitung mundur acara</li>
+          <li>Google Maps terintegrasi</li>
+          <li>Berbagi link WhatsApp</li>
+          <li class="disabled">Musik background</li>
+          <li class="disabled">Amplop digital</li>
+          <li class="disabled">Statistik kunjungan</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-outline" onclick="openModal(); return false;">Mulai dengan Basic</a>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-badge">✦ Paling Populer</div>
+        <div class="price-plan">Premium</div>
+        <div class="price-amount">
+          <span class="price-currency">Rp</span>
+          <span class="price-num featured-num">129<small style="font-size:20px">.000</small></span>
+        </div>
+        <div class="price-desc">Per undangan · Aktif 6 bulan<br>Pilihan terbaik untuk pernikahan</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Semua template premium</li>
+          <li>Nama tamu personal</li>
+          <li>RSVP otomatis (maks. 1000 tamu)</li>
+          <li>Hitung mundur acara</li>
+          <li>Google Maps terintegrasi</li>
+          <li>Berbagi link instan</li>
+          <li>Musik background custom</li>
+          <li>Amplop digital (QRIS + Bank)</li>
+          <li>Statistik &amp; analytics lengkap</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-solid" onclick="openModal(); return false;">Mulai dengan Premium</a>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">Exclusive</div>
+        <div class="price-amount">
+          <span class="price-currency">Rp</span>
+          <span class="price-num">249<small style="font-size:20px">.000</small></span>
+        </div>
+        <div class="price-desc">Per undangan · Aktif 12 bulan<br>Untuk corporate &amp; acara prestisius</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Desain template custom</li>
+          <li>Nama tamu personal</li>
+          <li>RSVP tak terbatas</li>
+          <li>Hitung mundur acara</li>
+          <li>Google Maps terintegrasi</li>
+          <li>Berbagi link instan + domain khusus</li>
+          <li>Musik background custom</li>
+          <li>Amplop digital premium</li>
+          <li>Dashboard analytics enterprise</li>
+        </ul>
+        <a href="#" class="btn-price btn-price-outline" onclick="openModal(); return false;">Mulai dengan Exclusive</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-badge">✦ FAQ</div>
+      <h2 class="section-title">Pertanyaan yang <em>Sering Ditanya</em></h2>
+    </div>
+    <div class="faq-list reveal" style="transition-delay: 0.1s">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah undangan bisa diedit setelah dibayar?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ya, kamu bisa mengedit semua isi undangan kapan saja selama masa aktif berlangsung. Perubahan akan langsung terlihat oleh tamu yang membuka link undanganmu.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Berapa lama undangan aktif setelah pembayaran?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Paket Basic aktif 3 bulan, Premium aktif 6 bulan, dan Exclusive aktif 12 bulan sejak tanggal pembayaran. Kamu bisa memperpanjang masa aktif dari dashboard kapan saja.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah ada biaya tambahan untuk penambahan fitur?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Tidak ada biaya tambahan tersembunyi. Semua fitur yang tertera di paket sudah termasuk dalam harga yang dibayarkan. Kamu hanya perlu upgrade paket jika membutuhkan fitur eksklusif.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Metode pembayaran apa saja yang tersedia?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Kami menerima QRIS, transfer bank (BCA, Mandiri, BNI, BRI), GoPay, OVO, Dana, ShopeePay, dan kartu kredit/debit Visa/Mastercard. Semua transaksi diproses melalui Midtrans yang aman.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Bisakah saya preview template sebelum membeli?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Tentu! Kamu bisa preview semua template secara gratis sebelum memutuskan untuk membeli. Klik tombol "Preview" di setiap template untuk melihat tampilan lengkapnya.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Apakah undangan bisa dibuka di semua perangkat?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ya, semua template Invitara dioptimasi untuk tampil sempurna di smartphone, tablet, dan komputer. Tamu bisa membuka undangan dari perangkat apapun tanpa perlu menginstall aplikasi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Siap Membuat Undangan <em>Impianmu?</em></h2>
+    <p>Bergabung dengan 50.000+ pengguna yang sudah mempercayai Invitara untuk momen spesial mereka.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-cta-white" onclick="openModal(); return false;">✦ Mulai Gratis Sekarang</a>
+      <a href="#templates" class="btn-cta-outline">Lihat Template →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom: 0;">
+        <div class="logo-mark">I</div>
+        <span class="logo-text">Invit<span>ara</span></span>
+      </a>
+      <p class="footer-tagline">Platform undangan digital premium Indonesia. Buat momen spesialmu menjadi kenangan yang tak terlupakan.</p>
+      <div class="footer-socials">
+        <a class="social-icon" title="Instagram">📸</a>
+        <a class="social-icon" title="TikTok">🎵</a>
+        <a class="social-icon" title="WhatsApp">💬</a>
+        <a class="social-icon" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Platform</h5>
+      <ul class="footer-links">
+        <li><a href="#">Template</a></li>
+        <li><a href="#">Cara Kerja</a></li>
+        <li><a href="#">Harga</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Affiliate</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Bantuan</h5>
+      <ul class="footer-links">
+        <li><a href="#">Pusat Bantuan</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Status Layanan</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+        <li><a href="#">Syarat & Ketentuan</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Hubungi Kami</h5>
+      <div class="footer-contact-item">💬 <span>CS via WhatsApp<br><a href="#" style="color: rgba(255,255,255,0.55);">+62 812-3456-7890</a></span></div>
+      <div class="footer-contact-item">✉ <span><a href="#" style="color: rgba(255,255,255,0.55);">halo@invitara.id</a></span></div>
+      <div class="footer-contact-item">🕐 <span>Senin – Sabtu<br>08.00 – 21.00 WIB</span></div>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>© 2026 Invitara. Dibuat dengan ❤ di Indonesia.</span>
+    <span>
+      <a href="#">Privasi</a> · <a href="#">Ketentuan</a> · <a href="#">Cookies</a>
+    </span>
+  </div>
+</footer>
+
+<!-- ── LOGIN MODAL ── -->
+<div class="modal-overlay" id="loginModal" onclick="handleModalClick(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-logo">
+      <div style="display:inline-flex;align-items:center;gap:8px;">
+        <div class="logo-mark" style="width:32px;height:32px;font-size:16px;">I</div>
+        <span style="font-family:var(--font-display);font-size:20px;font-weight:500;">Invit<span style="color:var(--purple)">ara</span></span>
+      </div>
+    </div>
+    <h2 class="modal-title">Selamat Datang</h2>
+    <p class="modal-sub">Masuk atau daftar untuk mulai membuat undangan digital premium-mu</p>
+    <button class="btn-google" onclick="simulateLogin()">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      Lanjutkan dengan Google
+    </button>
+    <div class="modal-divider"><span>atau</span></div>
+    <button class="btn-google" style="border-color: var(--sage-dark); color: var(--sage-deeper);" onclick="simulateLogin()">
+      📧 Masuk dengan Email
+    </button>
+    <p class="modal-tnc" style="margin-top: 1.25rem">Dengan masuk, kamu menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> Invitara.</p>
+  </div>
+</div>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Countdown
+  function updateCountdown() {
+    const target = new Date('2025-12-14T10:00:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff > 0) {
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const el = (id, v) => { const e = document.getElementById(id); if(e) e.textContent = String(v).padStart(2,'0'); };
+      el('cd-days', d); el('cd-hrs', h); el('cd-min', m); el('cd-sec', s);
+    }
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Modal
+  function openModal() {
+    document.getElementById('loginModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('loginModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleModalClick(e) {
+    if (e.target === document.getElementById('loginModal')) closeModal();
+  }
+  function simulateLogin() {
+    const modal = document.getElementById('modalBox');
+    modal.innerHTML = `
+      <div style="text-align:center;padding:1rem 0;">
+        <div style="width:60px;height:60px;background:linear-gradient(135deg,var(--sage),var(--sage-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 1.25rem;">✓</div>
+        <h2 style="font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--charcoal);margin-bottom:0.5rem;">Berhasil Masuk!</h2>
+        <p style="font-size:14px;color:var(--gray-mid);margin-bottom:1.5rem;font-weight:300;">Mengarahkan ke dashboard kamu...</p>
+        <div style="width:200px;height:4px;background:var(--gray-light);border-radius:99px;margin:0 auto;overflow:hidden;">
+          <div style="width:0%;height:100%;background:linear-gradient(90deg,var(--purple),var(--pink-dark));border-radius:99px;animation:loadBar 1.5s ease forwards;"></div>
+        </div>
+      </div>
+      <style>@keyframes loadBar{to{width:100%}}</style>
+    `;
+    setTimeout(closeModal, 2000);
+  }
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Category filter
+  function filterCat(btn, cat) {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.template-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Keyboard close modal
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  function toggleMobileMenu() {
+    // Mobile menu placeholder
+    openModal();
+  }
+</script>
+</body>
+</html>
