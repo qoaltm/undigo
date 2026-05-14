@@ -1,74 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal';
 import TemplateCard from '../components/TemplateCard';
 import { TEMPLATES, CATEGORIES } from '../data';
 
-const TEMPLATE_SLUGS = {
-  'Ocean Blue Elegance': 'ocean-blue',
-  // 'Javanese Gold': 'javanese-gold',
-};
-
 export default function CatalogPage({ onCheckout }) {
-  useReveal();
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('all');
-  const [search, setSearch] = useState('');
+
+  const filtered = TEMPLATES.filter(t =>
+    activeCategory === 'all' || t.category === activeCategory
+  );
+
+  // Re-observe .reveal elements setiap kali filtered berubah
+  // (fix: kartu tidak muncul setelah filter ganti dari kategori kosong)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+    );
+    // Sedikit delay supaya DOM sudah render sebelum observe
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }, 30);
+    return () => { clearTimeout(timer); observer.disconnect(); };
+  }, [filtered.length, activeCategory]);
 
   const handlePreview = (template) => {
-    const slug = TEMPLATE_SLUGS[template.name];
-    if (slug) {
-      navigate(`/preview/${slug}`);
+    if (template.previewId) {
+      navigate(`/preview/${template.previewId}`);
     } else {
       alert(`Preview "${template.name}" sedang dalam pengembangan.`);
     }
   };
 
-  const filtered = TEMPLATES.filter(t => {
-    const matchCat = activeCategory === 'all' || t.category === activeCategory;
-    const matchSearch = t.name.toLowerCase().includes(search.toLowerCase())
-      || t.categoryLabel.toLowerCase().includes(search.toLowerCase());
-    return matchCat && matchSearch;
-  });
-
   return (
     <div className="min-h-screen pt-[68px]">
 
-      {/* ── HERO ── */}
-      <div className="relative overflow-hidden px-8 pt-20 pb-16 text-center bg-cream">
+      {/* ── HERO — compact ── */}
+      <div className="relative overflow-hidden px-8 pt-10 pb-6 text-center bg-cream">
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 80%, rgba(220,231,215,0.4) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 20%, rgba(230,179,211,0.2) 0%, transparent 55%)' }} />
         <div className="relative z-[1] max-w-[680px] mx-auto">
           <div className="section-badge">✦ Katalog Template</div>
-          <h1 className="font-display text-[clamp(36px,5vw,56px)] font-normal leading-[1.12] text-charcoal mb-4">
+          <h1 className="font-display text-[clamp(28px,4vw,42px)] font-normal leading-[1.12] text-charcoal mb-0">
             Temukan Template <em className="italic text-purple">Impianmu</em>
           </h1>
-          <p className="text-[16px] font-light text-charcoal-soft leading-[1.75] mb-8">
-            120+ desain premium untuk pernikahan, khitanan, ulang tahun, aqiqah, dan corporate event.
-            Semua bisa dipreview gratis sebelum membeli.
-          </p>
-
-          {/* Search */}
-          <div className="relative max-w-[480px] mx-auto flex items-center">
-            <span className="absolute left-4 text-base pointer-events-none">🔍</span>
-            <input
-              type="text"
-              className="w-full py-[0.85rem] pl-12 pr-10 font-body text-[14px] text-charcoal bg-white border-[1.5px] border-border rounded-[36px] outline-none transition-colors duration-200 shadow-sm focus:border-purple-light"
-              placeholder="Cari template… (cth: pernikahan, ulang tahun)"
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
-            {search && (
-              <button
-                className="absolute right-4 bg-transparent border-none cursor-pointer text-gray-mid text-[13px]"
-                onClick={() => setSearch('')}
-              >✕</button>
-            )}
-          </div>
         </div>
       </div>
 
       {/* ── BODY ── */}
-      <div className="max-w-[1300px] mx-auto px-8 pt-10 pb-20 grid gap-10 items-start md:grid-cols-[200px_1fr]">
+      <div className="max-w-[1300px] mx-auto px-8 pt-8 pb-20 grid gap-10 items-start md:grid-cols-[200px_1fr]">
 
         {/* Sidebar */}
         <div className="md:sticky md:top-[88px] flex flex-wrap gap-1.5 md:flex-col md:gap-0">
@@ -95,11 +83,11 @@ export default function CatalogPage({ onCheckout }) {
         {/* Main */}
         <div>
           <div className="flex items-center justify-between mb-6 text-[13.5px] text-gray-mid">
-            <span>{filtered.length} template ditemukan</span>
-            {(activeCategory !== 'all' || search) && (
+            <span>{filtered.length} template</span>
+            {activeCategory !== 'all' && (
               <button
                 className="bg-transparent border-none cursor-pointer text-purple text-[13px] font-body underline"
-                onClick={() => { setActiveCategory('all'); setSearch(''); }}
+                onClick={() => setActiveCategory('all')}
               >
                 Reset filter
               </button>
@@ -108,13 +96,17 @@ export default function CatalogPage({ onCheckout }) {
 
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center text-center gap-4 py-16 px-8">
-              <div className="text-5xl">🔍</div>
-              <h3 className="font-display text-[22px] font-normal text-charcoal">Template tidak ditemukan</h3>
-              <p className="text-[14px] text-gray-mid">Coba kata kunci lain atau reset filter.</p>
+              <div className="text-[2.5rem] opacity-30">✦</div>
+              <h3 className="font-display text-[22px] font-normal text-charcoal">
+                Belum ada template {CATEGORIES.find(c => c.key === activeCategory)?.label}
+              </h3>
+              <p className="text-[13.5px] text-gray-mid max-w-[280px]">
+                Template kategori ini sedang dalam pengerjaan. Cek kembali sebentar lagi!
+              </p>
               <button
-                className="px-6 py-[0.7rem] text-[14px] font-medium text-white border-none rounded-[36px] cursor-pointer"
+                className="mt-2 px-6 py-[0.7rem] text-[14px] font-medium text-white border-none rounded-[36px] cursor-pointer"
                 style={{ background: 'linear-gradient(135deg, #8E4A97, #6B3572)' }}
-                onClick={() => { setActiveCategory('all'); setSearch(''); }}
+                onClick={() => setActiveCategory('all')}
               >
                 Lihat Semua Template
               </button>
@@ -122,7 +114,7 @@ export default function CatalogPage({ onCheckout }) {
           ) : (
             <div className="grid gap-6 reveal" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))' }}>
               {filtered.map(t => (
-                <TemplateCard key={t.id} template={t} onCheckout={onCheckout} onPreview={handlePreview} />
+                <TemplateCard key={t.previewId || t.id} template={t} onCheckout={onCheckout} onPreview={handlePreview} />
               ))}
             </div>
           )}
@@ -141,9 +133,9 @@ export default function CatalogPage({ onCheckout }) {
         <button
           className="px-6 py-[0.7rem] text-[14px] font-medium text-white border-none rounded-[36px] cursor-pointer shadow-[0_4px_16px_rgba(142,74,151,0.28)] hover:-translate-y-px transition-all duration-200"
           style={{ background: 'linear-gradient(135deg, #8E4A97, #6B3572)' }}
-          onClick={() => onCheckout()}
+          onClick={() => onCheckout?.()}
         >
-          Request Custom Template →
+          Request Custom →
         </button>
       </div>
     </div>
